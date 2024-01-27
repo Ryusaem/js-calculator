@@ -1,2 +1,7 @@
 # calculator-odin-project
-https://www.theodinproject.com/lessons/foundations-calculator
+
+Course Project → https://www.theodinproject.com/lessons/foundations-calculator
+
+Wireframe → https://wireframe.cc/kNVFGh
+
+Live Preview →
