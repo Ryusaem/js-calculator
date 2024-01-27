@@ -48,7 +48,19 @@ body {
     border: 2px solid blue;
     height: 25%;
     border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: 2rem;
+    padding: 15px;
+    gap: 10px;
 }
+
+.current-operation-display {
+    font-size: 1.3rem;
+}
+
+
 
 .control-buttons {
     border: 2px solid green;

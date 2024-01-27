@@ -23,6 +23,15 @@ const keys = {
 // --- SELECTORS --- //
 const controlButtons = document.querySelector(".control-buttons");
 const calculatorKeys = document.querySelector(".calculator-keys");
+const resultDisplay = document.querySelector(".result-display");
+
+const currentOperationDisplay = document.createElement("div");
+const calculationResult = document.createElement("div");
+currentOperationDisplay.textContent = "0";
+currentOperationDisplay.classList.add("current-operation-display");
+calculationResult.textContent = 0;
+resultDisplay.appendChild(currentOperationDisplay);
+resultDisplay.appendChild(calculationResult);
 
 // BUTTON CLEAR + DELETE CREATION //
 const buttonClear = document.createElement("button");
@@ -45,8 +54,13 @@ for (let i = 0; i < row * column; i++) {
   key.textContent = value;
   key.id = `key-${value}`;
   key.classList.add("key");
+  key.addEventListener(
+    "click",
+    (e) => (currentOperationDisplay.textContent += e.target.value)
+  );
   calculatorKeys.appendChild(key);
 }
 
-calculatorKeys.addEventListener("click", (e) => console.log(e.target.value));
-controlButtons.addEventListener("click", (e) => console.log(e.target.value));
+calculatorKeys.controlButtons.addEventListener("click", (e) =>
+  console.log(e.target.value)
+);
