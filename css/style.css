@@ -53,11 +53,18 @@ body {
 .control-buttons {
     border: 2px solid green;
     height: 15%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .calculator-keys {
     border: 2px solid black;
     height: 60%;
+}
+
+.btn {
+    width: 45%;
+    height: 100%;
 }
 
 .footer {
