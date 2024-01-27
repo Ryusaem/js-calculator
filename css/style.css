@@ -27,6 +27,37 @@ body {
 
 .main {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 2px solid red;  
+    width: 35%;
+    height: 650px;
+    background-color: beige;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border-radius: 5%;
+}
+
+.result-display {
+    border: 2px solid blue;
+    height: 25%;
+    border-radius: 3%;
+}
+
+.control-buttons {
+    border: 2px solid green;
+    height: 15%;
+}
+
+.calculator-keys {
+    border: 2px solid black;
+    height: 60%;
 }
 
 .footer {
