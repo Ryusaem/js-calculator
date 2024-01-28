@@ -20,31 +20,39 @@ const keys = {
   15: { symbol: "+", type: "data-operator" },
 };
 
-let firstOperand = "";
-let secondOperand = "";
-let currentOperation = null;
-let shouldResetScreen = false;
+let operandA = "";
+let operandB = "";
+let operation = null;
+let needsReset = false;
+
 // Initiation: Creation of the calculator keys
 initializeCalculator(keys, row, column);
 
 // --- SELECTORS --- //
+// --- Main Container (3)--- //
 const resultDisplay = document.querySelector(".result-display");
 const controlButtons = document.querySelector(".control-buttons");
 const calculatorKeys = document.querySelector(".calculator-keys");
-const numberButtons = document.querySelectorAll("[data-number]");
-const operatorButtons = document.querySelectorAll("[data-operator]");
+
+// --- Result Display (2) --- //
 const currentOperationDisplay = document.querySelector(
   ".current-operation-display"
 );
 const calculationResult = document.querySelector(".calculation-result");
+
+// --- Control Buttons (2) --- //
 const buttonClear = document.querySelector(".btn[value='Clear']");
 const buttonDelete = document.querySelector(".btn[value='Delete']");
+
+// --- Calculator Keys (16) --- //
+const numberButtons = document.querySelectorAll("[data-number]");
+const operatorButtons = document.querySelectorAll("[data-operator]");
 const buttonEqual = document.querySelector("[data-equal]");
 const buttonPoint = document.querySelector("[data-point]");
 
 // --- EVENT LISTENERS --- //
 buttonClear.addEventListener("click", clearCalculator);
-buttonDelete.addEventListener("click", deleteOneChar);
+buttonDelete.addEventListener("click", backspace);
 buttonEqual.addEventListener("click", () => console.log("equal"));
 buttonPoint.addEventListener("click", () => console.log("."));
 
@@ -52,7 +60,7 @@ numberButtons.forEach((button) =>
   button.addEventListener("click", () => appendNumber(button.textContent))
 );
 operatorButtons.forEach((button) =>
-  button.addEventListener("click", () => console.log("operator"))
+  button.addEventListener("click", () => setOperation(button.textContent))
 );
 
 // FUNCTION CREATION //
@@ -119,21 +127,33 @@ function initializeCalculator(keys, row, column) {
 
 // --- FONCTION MAIN --- ///
 function clearCalculator() {
-  currentOperationDisplay.textContent = 0;
+  currentOperationDisplay.textContent = "";
   calculationResult.textContent = 0;
-}
-
-function deleteOneChar() {
-  let result = calculationResult.textContent;
-  if (result.length > 1) calculationResult.textContent = result.slice(0, -1);
-}
-
-function appendNumber(number) {
-  if (calculationResult.textContent === "0" || shouldResetScreen) resetScreen();
-  calculationResult.textContent += number;
+  operandA = "";
+  operandB = "";
+  operation = null;
+  needsReset = false;
 }
 
 function resetScreen() {
   calculationResult.textContent = "";
-  shouldResetScreen = false;
+  needsReset = false;
+}
+
+function backspace() {
+  let result = calculationResult.textContent;
+  calculationResult.textContent = result.length > 1 ? result.slice(0, -1) : "0";
+}
+
+function appendNumber(number) {
+  if (calculationResult.textContent === "0" || needsReset) resetScreen();
+  calculationResult.textContent += number;
+}
+
+function setOperation(operator) {
+  if (operation !== null) evaluate();
+  operandA = calculationResult.textContent;
+  operation = operator;
+  currentOperationDisplay.textContent = `${operandA} ${operation}`;
+  needsReset = true;
 }
