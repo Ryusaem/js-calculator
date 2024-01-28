@@ -53,8 +53,8 @@ const buttonPoint = document.querySelector("[data-point]");
 // --- EVENT LISTENERS --- //
 buttonClear.addEventListener("click", clearCalculator);
 buttonDelete.addEventListener("click", backspace);
-buttonEqual.addEventListener("click", () => console.log("equal"));
-buttonPoint.addEventListener("click", () => console.log("."));
+buttonEqual.addEventListener("click", performCalculation);
+buttonPoint.addEventListener("click", addDecimal);
 
 numberButtons.forEach((button) =>
   button.addEventListener("click", () => inputNumber(button.textContent))
@@ -152,9 +152,74 @@ function inputNumber(number) {
 }
 
 function setOperation(operator) {
-  if (operation !== null) evaluate();
+  if (operation !== null) performCalculation();
   operandA = calculationResult.textContent;
   operation = operator;
   currentOperationDisplay.textContent = `${operandA} ${operation}`;
   needsReset = true;
+}
+
+function addDecimal() {
+  if (needsReset) resetScreen();
+  if (calculationResult.textContent === "") calculationResult.textContent = "0";
+  if (calculationResult.textContent.includes(".")) return;
+  calculationResult.textContent += ".";
+}
+
+function performCalculation() {
+  if (!operation || needsReset) return;
+
+  const currentInput = calculationResult.textContent;
+  if (operation === "÷" && currentInput === "0") {
+    alert("You can't divide by 0!");
+    return;
+  }
+
+  operandB = currentInput;
+
+  const operationResult = calculateResult(operation, operandA, operandB);
+
+  calculationResult.textContent = operationResult; // we display the result on the bottom screen
+
+  currentOperationDisplay.textContent = `${operandA} ${operation} ${operandB} =`; // we display the operation on the top screen
+
+  operation = null;
+}
+
+function calculateResult(operator, num1, num2) {
+  num1 = Number(num1);
+  num2 = Number(num2);
+
+  switch (operator) {
+    case "+":
+      return add(num1, num2);
+    case "-":
+      return subtract(num1, num2);
+    case "×":
+      return multiply(num1, num2);
+    case "÷":
+      return num2 === 0 ? null : divide(num1, num2);
+    default:
+      return null;
+  }
+
+  function add(a, b) {
+    return roundResult(a + b);
+  }
+
+  function subtract(a, b) {
+    return roundResult(a - b);
+  }
+
+  function multiply(a, b) {
+    return roundResult(a * b);
+  }
+
+  function divide(a, b) {
+    return roundResult(a / b);
+  }
+
+  function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
+  }
 }
