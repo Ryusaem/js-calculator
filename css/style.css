@@ -51,18 +51,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: end;
-    font-size: 2rem;
+    font-size: 2.2rem;
     padding: 15px;
     gap: 10px;
+    overflow: hidden; /* Hide the overflowed text */
 }
 
 .current-operation-display {
-    font-size: 1.3rem;
-    height: 30%;
+    font-size: 1rem;
+    min-height: 30%;
 }
 
+
 .calculation-result {
-    height: 70%;
+    min-height: 70%; /* Use min-height instead of height */
 }
 
 

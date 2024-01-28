@@ -57,7 +57,7 @@ buttonEqual.addEventListener("click", () => console.log("equal"));
 buttonPoint.addEventListener("click", () => console.log("."));
 
 numberButtons.forEach((button) =>
-  button.addEventListener("click", () => appendNumber(button.textContent))
+  button.addEventListener("click", () => inputNumber(button.textContent))
 );
 operatorButtons.forEach((button) =>
   button.addEventListener("click", () => setOperation(button.textContent))
@@ -96,7 +96,7 @@ function initializeCalculator(keys, row, column) {
   ) {
     const currentOperationDisplay = document.createElement("div");
     const calculationResult = document.createElement("div");
-    currentOperationDisplay.textContent = 0;
+    currentOperationDisplay.textContent = "";
     currentOperationDisplay.classList.add("current-operation-display");
     calculationResult.textContent = 0;
     calculationResult.classList.add("calculation-result");
@@ -142,10 +142,11 @@ function resetScreen() {
 
 function backspace() {
   let result = calculationResult.textContent;
-  calculationResult.textContent = result.length > 1 ? result.slice(0, -1) : "0";
+  calculationResult.textContent =
+    result.length > 1 ? result.slice(0, -1) : resetScreen();
 }
 
-function appendNumber(number) {
+function inputNumber(number) {
   if (calculationResult.textContent === "0" || needsReset) resetScreen();
   calculationResult.textContent += number;
 }
