@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-    font-size: 3em; 
+    font-size: 2em; 
     font-family: 'Arial', sans-serif;
     color: #4a473e; 
     text-shadow: 2px 2px 4px #b8b09b;
@@ -47,7 +47,8 @@ h1 {
 .container {
     border: 2px solid gray;  
     width: 35%;
-    height: 650px;
+    max-width: 90%;
+    min-height: 650px;
     padding: 35px;
     display: flex;
     flex-direction: column;
@@ -132,8 +133,9 @@ h1 {
 
 .key {
     color: #333;
-    width: 100px;
-    height: 70px;
+    width: 21%;
+    /* height: 70px; */
+    height: 3rem;
     cursor: pointer;
     transition: all 0.3s ease;
     background: linear-gradient(to right, var(--main-color), #dcd0c0);
@@ -158,4 +160,29 @@ h1 {
     margin-left: 10px;
     text-decoration: none;
     color: blue;
+}
+
+
+@media (min-width: 900px) {
+    .container {
+        max-width: 50%;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 3em; /* Larger font size for larger screens */
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 100px) and (max-width: 899px) {
+    .key {
+        /* Adjustments for medium screens */
+        height: 2rem;
+    }
+
+    .container {
+        /* max-width: auto; Larger screens can have a smaller max-width */
+        width: auto;
+    }
 }
