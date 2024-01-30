@@ -49,6 +49,7 @@ h1 {
     width: 35%;
     max-width: 90%;
     min-height: 650px;
+    max-height: 70vh;
     padding: 35px;
     display: flex;
     flex-direction: column;
@@ -165,7 +166,7 @@ h1 {
 
 @media (min-width: 900px) {
     .container {
-        max-width: 50%;
+        max-width: 40%;
         width: 90%;
     }
 
@@ -175,14 +176,34 @@ h1 {
 }
 
 /* Medium screens (tablets) */
-@media (min-width: 100px) and (max-width: 899px) {
+@media (min-width: 600px) and (max-width: 1100px) {
+    h1 {
+        font-size: 1.5em; /* Larger font size for larger screens */
+    }
+    
     .key {
         /* Adjustments for medium screens */
         height: 2rem;
+        width: 20%;
     }
 
     .container {
         /* max-width: auto; Larger screens can have a smaller max-width */
+        width: auto;
+    }
+}
+
+@media (max-width: 599px) {
+    h1 {
+        font-size: 1em;
+    }
+
+    .key {
+        height: 2rem;
+        width: 18%;
+    }
+
+    .container {
         width: auto;
     }
 }
