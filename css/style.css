@@ -193,9 +193,15 @@ h1 {
     }
 }
 
+/* Small screens (landscape phones) */
 @media (max-width: 599px) {
     h1 {
         font-size: 1em;
+    }
+
+    .calculator-keys {
+        /* height: 70%; */
+        gap: 10px;
     }
 
     .key {
@@ -205,5 +211,9 @@ h1 {
 
     .container {
         width: auto;
+    }
+
+    .btn {
+        font-size: 1rem;
     }
 }
