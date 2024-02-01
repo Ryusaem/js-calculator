@@ -1,218 +1,197 @@
-/* --- ROOT --- */
+
 :root {
-    --main-color: #eceadb;
+	--main-color: #eceadb;
 }
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background-color: var(--main-color);
+*,*::before,*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	background-color: var(--main-color);
 }
-
 body {
-    /* background-color: var(--main-color); */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+	
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
-
 h1 {
-    font-size: 2em; 
-    font-family: 'Arial', sans-serif;
-    color: #4a473e; 
-    text-shadow: 2px 2px 4px #b8b09b;
-    letter-spacing: 1px; 
-    text-align: center; /* Center align, adjust as needed */
-    margin-top: 20px; /* Space at the top, adjust as needed */
-    margin-bottom: 20px; /* Space at the bottom, adjust as needed */
+	font-size: 2em;
+	font-family: 'Arial', sans-serif;
+	color: #4a473e;
+	text-shadow: 2px 2px 4px #b8b09b;
+	letter-spacing: 1px;
+	text-align: center;
+	
+	margin-top: 20px;
+	
+	margin-bottom: 20px;
+	
 }
-
 .header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px 0;
 }
-
 .main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
 .container {
-    border: 2px solid gray;  
-    width: 35%;
-    max-width: 90%;
-    min-height: 650px;
-    max-height: 70vh;
-    padding: 35px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    border-radius: 5%;
-    background: linear-gradient(135deg, #eceadb 0%, #dcd0c0 100%);
+	border: 2px solid gray;
+	width: 35%;
+	max-width: 90%;
+	min-height: 70vh;
+	
+	
+	padding: 35px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	border-radius: 5%;
+	background: linear-gradient(135deg, #eceadb 0%, #dcd0c0 100%);
 }
-
 .result-display {
-    /* border: 2px solid blue; */
-    height: 25%;
-    border-radius: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    font-size: 2.2rem;
-    padding: 15px;
-    gap: 10px;
-    overflow: hidden; /* Hide the overflowed text */
+	
+	height: 25%;
+	border-radius: 3%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	font-size: 2.2rem;
+	padding: 15px;
+	gap: 10px;
+	overflow: hidden;
+	
 }
-
 .current-operation-display {
-    font-size: 1rem;
-    min-height: 30%;
+	font-size: 1rem;
+	min-height: 30%;
 }
-
-
 .calculation-result {
-    min-height: 70%; /* Use min-height instead of height */
+	min-height: 70%;
+	
 }
-
-
-
 .control-buttons {
-    /* border: 2px solid green; */
-    height: 15%;
-    display: flex;
-    justify-content: space-between;
+	
+	height: 15%;
+	display: flex;
+	justify-content: space-between;
 }
-
 .calculator-keys {
-    /* border: 2px solid black; */
-    height: 60%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+	
+	height: 60%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
 }
-
-
 .btn {
-    width: 48%;
-    height: 100%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #a6a08f; /* A darker shade of the main color */
-    color: #fff; /* White text for better visibility */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    border: none; /* No border, add if needed */
-    border-radius: 4px; /* Slight rounding of corners */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+	width: 48%;
+	height: 100%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background-color: #a6a08f;
+	
+	color: #fff;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	border: none;
+	
+	border-radius: 4px;
+	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	
 }
-
 .btn:active {
-    background-color: #8c897a; /* An even darker shade for hover state */
-    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+	background-color: #8c897a;
+	
+	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
+	
 }
-
 .btn[value='Delete'] {
-    background: linear-gradient(135deg, #f85032 0%, #e73827 100%);
-    color: white; /
+	background: linear-gradient(135deg, #f85032 0%, #e73827 100%);
+	color: #FFFFFF;
+	/
 }
-
 .btn[value='Clear'] {
-    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-  color: white;
+	background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+	color: #FFFFFF;
 }
-
-
 .key {
-    color: #333;
-    width: 21%;
-    /* height: 70px; */
-    height: 3rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: linear-gradient(to right, var(--main-color), #dcd0c0);
-    box-shadow: 0 4px 15px 0 rgba(236, 234, 219, 0.75); 
-    border-radius: 5%;
+	color: #333;
+	width: 21%;
+	
+	height: 3rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background: linear-gradient(to right, var(--main-color), #dcd0c0);
+	box-shadow: 0 4px 15px 0 rgba(236, 234, 219, 0.75);
+	border-radius: 5%;
 }
-
 .key:active {
-    background-color: #c2b9a8;
-    transform: translateY(4px);
-    box-shadow: 0 2px 10px 0 rgba(236, 234, 219, 0.5);
-  }
-
+	background-color: #c2b9a8;
+	transform: translateY(4px);
+	box-shadow: 0 2px 10px 0 rgba(236, 234, 219, 0.5);
+}
 .footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px 0;
 }
-
 .footer a {
-    margin-left: 10px;
-    text-decoration: none;
-    color: blue;
+	margin-left: 10px;
+	text-decoration: none;
+	color: #0000FF;
 }
-
-
 @media (min-width: 900px) {
-    .container {
-        max-width: 40%;
-        width: 90%;
-    }
-
-    h1 {
-        font-size: 3em; /* Larger font size for larger screens */
-    }
+	.container {
+	max-width: 40%;
+	width: 90%;
+	}
+	h1 {
+	font-size: 3em;
+	
+	}
 }
 
-/* Medium screens (tablets) */
 @media (min-width: 600px) and (max-width: 1100px) {
-    h1 {
-        font-size: 1.5em; /* Larger font size for larger screens */
-    }
-    
-    .key {
-        /* Adjustments for medium screens */
-        height: 2rem;
-        width: 20%;
-    }
-
-    .container {
-        /* max-width: auto; Larger screens can have a smaller max-width */
-        width: auto;
-    }
+	h1 {
+	font-size: 1.5em;
+	
+	}
+	.key {
+	
+	height: 2rem;
+	width: 20%;
+	}
+	.container {
+	
+	width: auto;
+	}
 }
 
-/* Small screens (landscape phones) */
 @media (max-width: 599px) {
-    h1 {
-        font-size: 1em;
-    }
-
-    .calculator-keys {
-        gap: 10px;
-    }
-
-    .key {
-        height: 2rem;
-        width: 18%;
-    }
-
-    .container {
-        width: auto;
-    }
-
-    .btn {
-        font-size: 1rem;
-    }
+	h1 {
+	font-size: 1em;
+	}
+	.calculator-keys {
+	gap: 10px;
+	}
+	.key {
+	height: 2rem;
+	width: 18%;
+	}
+	.container {
+	width: auto;
+	}
+	.btn {
+	font-size: 1rem;
+	}
 }
